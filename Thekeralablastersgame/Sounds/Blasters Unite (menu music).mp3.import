@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckvgyxgmbmkle"
+path="res://.godot/imported/Blasters Unite (menu music).mp3-5777a99b898c97d858e730a1fbaf2091.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Blasters Unite (menu music).mp3"
+dest_files=["res://.godot/imported/Blasters Unite (menu music).mp3-5777a99b898c97d858e730a1fbaf2091.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dwsumvamlnvl7"
+path="res://.godot/imported/Pixelated Dreams (intense music).mp3-99e6d10adae56d2c6c94e59af56499a3.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Pixelated Dreams (intense music).mp3"
+dest_files=["res://.godot/imported/Pixelated Dreams (intense music).mp3-99e6d10adae56d2c6c94e59af56499a3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
