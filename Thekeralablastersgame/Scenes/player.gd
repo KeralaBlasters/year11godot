@@ -2,27 +2,25 @@ extends CharacterBody2D
 
 
 @export var SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+@export var ACCELERATION = 20.0
+@export var FRICTION = 10.0
+@onready var sprite = $Sprite
+@export var ROTATION_SPEED = 1.5
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_vector("left","right","up","down").normalized()
 	if direction:
-		velocity.x = direction * SPEED
+		velocity = velocity.move_toward(direction * SPEED, ACCELERATION)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
+	look_at(get_global_mouse_position())
+	var move_input = Input.get_axis("down", "up")
+	var rotation_direction = Input.get_axis("left", "right")
+	velocity = transform.x * move_input * SPEED
+	rotation += rotation_direction * ROTATION_SPEED * delta
+	
 
 	move_and_slide()
