@@ -1,16 +1,12 @@
 extends CharacterBody2D
 
-
-const SPEED = 300.0
-
+var speed = 750
 
 func _physics_process(delta):
+	position += transform.x * speed * delta
 	
 	
 	
 	move_and_slide()
 
 
-
-func _on_detect_player_area_body_entered(body):
-	pass # Replace with function body.
