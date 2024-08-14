@@ -7,12 +7,20 @@ extends CharacterBody2D
 @onready var sprite = $Sprite
 @export var ROTATION_SPEED = 1.5
 @export var Bullet : PackedScene
-@onready var animation_player = $Sprite
+
+@onready var animation_player = $AnimationPlayer
+@onready var animator = $AnimatedSprite2D
+
+enum state {IDLE, SHOOT}
+
+var anim_state = state.IDLE
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
-		animation_player.play("shoot")
+		anim_state = state.SHOOT
+	
+	
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -30,5 +38,4 @@ func shoot():
 		owner.add_child(b)
 		b.transform = $Muzzle.global_transform
 		
-	
 	
