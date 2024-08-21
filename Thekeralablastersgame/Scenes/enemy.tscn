@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4y2p5gj54p5q"]
+[gd_scene load_steps=6 format=3 uid="uid://c4y2p5gj54p5q"]
 
 [ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_qvcea"]
 [ext_resource type="Texture2D" uid="uid://crefcvtaf4mx0" path="res://Sprites/EnemyIdle.png" id="1_vu0pt"]
@@ -21,9 +21,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_asbn8"]
-size = Vector2(147, 97)
-
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_qvcea")
 
@@ -37,9 +34,12 @@ frame = 1
 frame_progress = 1.0
 
 [node name="DetectPlayerArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayerArea"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="DetectPlayerArea"]
 position = Vector2(71, 0)
-shape = SubResource("RectangleShape2D_asbn8")
+polygon = PackedVector2Array(-126, -1, -52, -158, -44, -151, -7, -132, 16, -110, 39, -69, 56, -24, 63, 1, 56, 37, 50, 67, 26, 97, 5, 120, -23, 137, -71, 164)
 
 [connection signal="body_entered" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_entered"]
+[connection signal="body_exited" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_exited"]
