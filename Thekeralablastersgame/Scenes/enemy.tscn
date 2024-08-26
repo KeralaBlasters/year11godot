@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4y2p5gj54p5q"]
+[gd_scene load_steps=9 format=3 uid="uid://c4y2p5gj54p5q"]
 
 [ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_qvcea"]
 [ext_resource type="Texture2D" uid="uid://crefcvtaf4mx0" path="res://Sprites/EnemyIdle.png" id="1_vu0pt"]
@@ -11,15 +11,81 @@ radius = 16.0312
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_vu0pt")
-}, {
-"duration": 1.0,
 "texture": ExtResource("2_ocfbl")
 }],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vu0pt")
+}],
 "loop": false,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_pptic"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["attack"]
+}
+
+[sub_resource type="Animation" id="Animation_lgine"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["idle"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w202s"]
+_data = {
+"attack": SubResource("Animation_pptic"),
+"idle": SubResource("Animation_lgine")
+}
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_qvcea")
@@ -30,8 +96,8 @@ shape = SubResource("CircleShape2D_ymxhh")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pen4w")
-frame = 1
-frame_progress = 1.0
+animation = &"attack"
+autoplay = "idle"
 
 [node name="DetectPlayerArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -39,7 +105,15 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="DetectPlayerArea"]
 position = Vector2(71, 0)
-polygon = PackedVector2Array(-126, -1, -52, -158, -44, -151, -7, -132, 16, -110, 39, -69, 56, -24, 63, 1, 56, 37, 50, 67, 26, 97, 5, 120, -23, 137, -71, 164)
+polygon = PackedVector2Array(-126, -1, -52, -158, -44, -151, -7, -132, 16, -110, 39, -69, 250, -72, 256, -11, 252, 54, 259, 99, 26, 97, 5, 120, -23, 137, -71, 164)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w202s")
+}
+
+[node name="EnemyMuzzle" type="Marker2D" parent="."]
+position = Vector2(30, 10)
 
 [connection signal="body_entered" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_entered"]
 [connection signal="body_exited" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_exited"]
