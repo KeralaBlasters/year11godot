@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c6yridohsmpk2" path="res://Sprites/EnemyShoot.png" id="2_ocfbl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ymxhh"]
-radius = 16.0312
+radius = 14.0357
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pen4w"]
 animations = [{
@@ -88,6 +88,7 @@ _data = {
 }
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_qvcea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -114,6 +115,16 @@ libraries = {
 
 [node name="EnemyMuzzle" type="Marker2D" parent="."]
 position = Vector2(30, 10)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." groups=["Enemy"]]
+path_desired_distance = 2.0
+target_desired_distance = 2.0
+path_max_distance = 20.0
+avoidance_enabled = true
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 1, 1)
+debug_path_custom_point_size = 5.9
+debug_path_custom_line_width = 4.83
 
 [connection signal="body_entered" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_entered"]
 [connection signal="body_exited" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_exited"]

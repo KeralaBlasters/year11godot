@@ -6,3 +6,10 @@ func _ready():
 func _physics_process(delta):
 	position += transform.x * speed * delta
 	
+
+
+
+func _on_body_entered(body: Node2D) -> void:
+	queue_free()
+	if body.is_in_group("Enemy") and body.has_method("take_damage"):
+		body.take_damage()
