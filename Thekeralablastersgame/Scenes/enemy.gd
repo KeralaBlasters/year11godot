@@ -18,6 +18,7 @@ func _physics_process(delta):
 		enemy_anim_state = state.ATTACK
 	else:
 		enemy_anim_state = state.IDLE
+		
 	
 	#if _on_detect_player_area_body_entered(player):
 		#var c = Enemy_bullet.instantiate()
