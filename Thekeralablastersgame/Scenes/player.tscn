@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cns1uh4cd35o8"]
+[gd_scene load_steps=12 format=3 uid="uid://cns1uh4cd35o8"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_osk2c"]
 [ext_resource type="PackedScene" uid="uid://cqah0kvy475bv" path="res://Scenes/bullet.tscn" id="2_yrhah"]
@@ -90,6 +90,9 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvd7q"]
 bg_color = Color(0.808137, 3.27289e-06, 7.70092e-07, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbmuj"]
+bg_color = Color(5.99228e-06, 0.466137, 0.0843921, 1)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_osk2c")
@@ -140,3 +143,37 @@ offset_top = -23.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_wvd7q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vbmuj")
+
+[node name="LevelUpNotice" type="PanelContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/LevelUpNotice"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/LevelUpNotice/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UI/Control/LevelUpNotice/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="UI/Control/LevelUpNotice/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UI/Control/LevelUpNotice/MarginContainer/VBoxContainer/Button2"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
