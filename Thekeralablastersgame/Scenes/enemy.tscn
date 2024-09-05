@@ -87,7 +87,7 @@ _data = {
 "idle": SubResource("Animation_lgine")
 }
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_mask = 0
 script = ExtResource("1_qvcea")
 

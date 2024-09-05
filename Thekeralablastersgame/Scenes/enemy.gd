@@ -7,7 +7,7 @@ var player = null
 @onready var animation_player = $AnimationPlayer
 @export var player_look_at: NodePath
 @export var Enemy_bullet = PackedScene
-@export var enemy_health = 50
+@export var enemy_health = 10
 
 enum state {IDLE, ATTACK}
 var enemy_anim_state = state.IDLE
@@ -20,10 +20,6 @@ func _physics_process(delta):
 		enemy_anim_state = state.IDLE
 		
 	
-	#if _on_detect_player_area_body_entered(player):
-		#var c = Enemy_bullet.instantiate()
-		#owner.add_child(c)
-		#c.transform = $EnemyMuzzle.global_transform
 	
 	if player:
 		nav.target_position = player.global_position
@@ -53,9 +49,7 @@ func _on_detect_player_area_body_exited(body):
 	
 
 func take_damage(dmg):
-	#enemy_health -= dmg
+	enemy_health -= dmg
 	enemy_health - 10
-	
-
 	if enemy_health <= 0:
 		queue_free()
