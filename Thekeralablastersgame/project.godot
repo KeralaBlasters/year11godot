@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerStats="*res://Singletons/player_stats.gd"
 BulletStats="*res://Singletons/bullet_stats.gd"
+MusicPlayer="*res://Scenes/music_player.tscn"
 
 [display]
 

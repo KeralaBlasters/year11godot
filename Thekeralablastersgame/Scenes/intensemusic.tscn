@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl5r16kgmgwgn"]
+
+[ext_resource type="AudioStream" uid="uid://dwsumvamlnvl7" path="res://Sounds/Pixelated Dreams (intense music).mp3" id="1_yth67"]
+[ext_resource type="AudioStream" uid="uid://3mrxcjdwll11" path="res://Sounds/Glitch in the System (calmer music).mp3" id="2_8h6i8"]
+
+[node name="music_player" type="Node2D"]
+
+[node name="intensemusic" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(40, 111)
+stream = ExtResource("1_yth67")
+
+[node name="calmmusic" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(53, 192)
+stream = ExtResource("2_8h6i8")
