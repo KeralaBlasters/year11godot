@@ -7,6 +7,8 @@ var player_experience = 0
 var next_level = 15
 
 signal level_up
+signal add_xp
+signal take_damage
 
 func level_up_player():
 	player_level += 1
@@ -16,5 +18,11 @@ func level_up_player():
 
 func add_experience(val):
 	player_experience += val
+	emit_signal("add_xp")
 	if player_experience >= next_level:
 		level_up_player()
+
+
+func damage_player(amount):
+	player_health -= amount
+	emit_signal("take_damage")

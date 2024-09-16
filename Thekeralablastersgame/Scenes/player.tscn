@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cns1uh4cd35o8"]
+[gd_scene load_steps=13 format=3 uid="uid://cns1uh4cd35o8"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_osk2c"]
 [ext_resource type="PackedScene" uid="uid://cqah0kvy475bv" path="res://Scenes/bullet.tscn" id="2_yrhah"]
 [ext_resource type="Texture2D" uid="uid://bkf77awvaaogw" path="res://Sprites/BlasterShoot.png" id="3_bpfiq"]
 [ext_resource type="Texture2D" uid="uid://xctl76cigvj" path="res://Sprites/BlasterIdle.png" id="4_eej6n"]
+[ext_resource type="Script" path="res://Scenes/ui.gd" id="5_dvr6r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mke1q"]
 animations = [{
@@ -117,6 +118,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("5_dvr6r")
 
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3
@@ -181,3 +183,11 @@ text = "Level Up Health"
 [node name="LevelUpGun" type="Button" parent="UI/Control/LevelUpNotice/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Level Up Gun"
+
+[node name="Time" type="Label" parent="UI"]
+offset_left = 8.0
+offset_top = 199.0
+offset_right = 48.0
+offset_bottom = 222.0
+
+[node name="Timer" type="Timer" parent="UI/Time"]
