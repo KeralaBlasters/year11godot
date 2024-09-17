@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 PlayerStats="*res://Singletons/player_stats.gd"
 BulletStats="*res://Singletons/bullet_stats.gd"
 MusicPlayer="*res://Scenes/music_player.tscn"
+EnemyBulletStats="*res://Singletons/enemy_bullet_stats.gd"
 
 [display]
 

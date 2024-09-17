@@ -124,11 +124,12 @@ tile_set = SubResource("TileSet_5p7px")
 navigation_visibility_mode = 1
 
 [node name="Enemy" parent="." instance=ExtResource("3_i7781")]
-position = Vector2(435, 124)
+position = Vector2(317, 69)
 scale = Vector2(0.2, 0.2)
 
 [node name="Player" parent="." instance=ExtResource("2_gmmy8")]
-position = Vector2(423, 135)
+position = Vector2(458, 140)
+rotation = 3.10456
 scale = Vector2(0.2, 0.2)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

@@ -6,10 +6,15 @@ extends CharacterBody2D
 @onready var sprite = $Sprite
 @export var ROTATION_SPEED = 1.5
 
+@export var player_health = 100
+
 @export var Bullet : PackedScene
 
 @onready var animation_player = $AnimationPlayer
 @onready var animator = $AnimatedSprite2D
+
+#var time = 0
+#var best_time = 0
 
 enum state {IDLE, SHOOT}
 var anim_state = state.IDLE
@@ -22,7 +27,11 @@ func update_animation():
 			$AnimationPlayer.play("shoot")
 			await $AnimationPlayer.animation_finished
 			anim_state = state.IDLE
-			
+
+
+#func _process(delta):
+#	time += delta
+
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -40,6 +49,7 @@ func _physics_process(delta):
 	update_animation()
 	move_and_slide()
 
+
 func shoot():
 		
 		var b = Bullet.instantiate()
@@ -47,3 +57,9 @@ func shoot():
 		b.transform = $Muzzle.global_transform
 		
 	
+
+func player_take_damage(dmg):
+	player_health -= dmg
+	player_health - 10
+	if player_health <= 0:
+		queue_free()

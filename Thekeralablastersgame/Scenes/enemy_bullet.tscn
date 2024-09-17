@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://corts8chryjey"]
+
+[ext_resource type="Script" path="res://Scenes/enemy_bullet.gd" id="1_klcef"]
+[ext_resource type="Texture2D" uid="uid://ds5rv1rgyugkf" path="res://Sprites/bullet.png" id="2_yijtj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w1qv"]
+size = Vector2(4, 51)
+
+[node name="EnemyBullet" type="Area2D"]
+rotation = 1.5708
+script = ExtResource("1_klcef")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.90735e-06, -25.5)
+shape = SubResource("RectangleShape2D_8w1qv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -27)
+texture = ExtResource("2_yijtj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

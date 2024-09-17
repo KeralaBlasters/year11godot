@@ -94,7 +94,7 @@ bg_color = Color(0.808137, 3.27289e-06, 7.70092e-07, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbmuj"]
 bg_color = Color(5.99228e-06, 0.466137, 0.0843921, 1)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 3
 script = ExtResource("1_osk2c")
 Bullet = ExtResource("2_yrhah")
@@ -184,10 +184,10 @@ text = "Level Up Health"
 layout_mode = 2
 text = "Level Up Gun"
 
-[node name="Time" type="Label" parent="UI"]
+[node name="Time" type="Label" parent="."]
 offset_left = 8.0
 offset_top = 199.0
 offset_right = 48.0
 offset_bottom = 222.0
 
-[node name="Timer" type="Timer" parent="UI/Time"]
+[node name="Timer2" type="Timer" parent="."]

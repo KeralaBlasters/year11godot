@@ -6,7 +6,7 @@ var bullet_speed = 500
 var bullet_projectiles = 1
 var bullet_knockback = 10
 
-func level_up_knife():
+func level_up_bullet():
 	bullet_level += 1
 	match bullet_level:
 		1:
