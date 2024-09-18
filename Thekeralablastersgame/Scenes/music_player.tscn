@@ -14,3 +14,4 @@ stream = ExtResource("1_ireab")
 [node name="calmmusic" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(53, 192)
 stream = ExtResource("2_bvr6m")
+autoplay = true
