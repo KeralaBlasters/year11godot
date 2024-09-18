@@ -1,4 +1,23 @@
-[gd_scene format=3 uid="uid://u841etiwslfp"]
+[gd_scene load_steps=8 format=3 uid="uid://u841etiwslfp"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/information.gd" id="1_hhjua"]
+[ext_resource type="AudioStream" uid="uid://ckvgyxgmbmkle" path="res://Sounds/Blasters Unite (menu music).mp3" id="2_jj5qf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ldo1l"]
+font_size = 9
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="Theme" id="Theme_xhb4n"]
+Button/colors/font_color = Color(0.87451, 0.87451, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjpjc"]
+bg_color = Color(0.0392157, 0.133333, 0.882353, 1)
+
+[sub_resource type="Theme" id="Theme_ag04s"]
+Button/colors/font_color = Color(0.191385, 0.177003, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8y8lu"]
+bg_color = Color(0.782425, 0.771323, 0, 1)
 
 [node name="Information" type="Control"]
 layout_mode = 3
@@ -7,6 +26,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hhjua")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 460.0
+offset_bottom = 250.0
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -15,19 +42,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -149.5
-offset_top = -112.5
-offset_right = 175.5
-offset_bottom = 66.5
+offset_left = -223.0
+offset_top = -117.0
+offset_right = 208.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "The Kerala Blasters are the best
- football team in the world. In the
- knockout stages of the ISL
- Bengaluru FC cheated and won
- the match against us because of it. So the
- ISL trophy has been robbed
- from us so we must steal it back."
+text = "The Kerala Blasters are the best football team in the world. In the knockout stages of the ISL
+ Bengaluru FC cheated and won the match against us because of it. Bengaluru FC winning this
+ match because of cheating meant that we got knocked out of the ISL where we would have won
+ it otherwise. We must get revenge on Bengaluru FC and steal the ISL trophy back because it
+ was robbed from us. Your job is to break into Bengaluru FC's high security facility in which they
+ store the ISL trophy and steal it back."
+label_settings = SubResource("LabelSettings_ldo1l")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,9 +63,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
+offset_left = -150.0
+offset_top = -54.0
+offset_right = 150.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -46,12 +74,23 @@ grow_vertical = 0
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="DoItForTheBlasters" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme = SubResource("Theme_xhb4n")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tjpjc")
 text = "Do It For The Blasters"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme = SubResource("Theme_ag04s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8y8lu")
 text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jj5qf")
+autoplay = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/DoItForTheBlasters" to="." method="_on_do_it_for_the_blasters_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

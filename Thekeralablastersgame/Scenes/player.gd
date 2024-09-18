@@ -63,3 +63,4 @@ func player_take_damage(dmg):
 	player_health - 10
 	if player_health <= 0:
 		queue_free()
+		get_tree().change_scene_to_file("res://Scenes/Levels/you_died.tscn")
