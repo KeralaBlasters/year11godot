@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
-@export var enemy_speed = 10
+@export var enemy_speed = 20
 var attacking = false
 var player = null
 
@@ -26,10 +26,9 @@ var enemy_anim_state = state.IDLE
 
 func _physics_process(delta):
 	if attacking:
-		#position += (player.position - position)/enemy_speed
 		enemy_anim_state = state.ATTACK
-		enemy_shoot_timer.start()
-		_on_enemy_shoot_timer_timeout()
+		if enemy_shoot_timer.is_stopped():enemy_shoot_timer.start()
+		#_on_enemy_shoot_timer_timeout()
 	else:
 		enemy_anim_state = state.IDLE
 		enemy_shoot_timer.stop()
@@ -57,6 +56,8 @@ func _on_detect_player_area_body_entered(body):
 	attacking = true
 	change_music()
 	
+func _on_enemy_shoot_timer_timeout():
+	enemy_shoot()
 
 func _on_detect_player_area_body_exited(body):
 	player = null
@@ -70,6 +71,8 @@ func take_damage(dmg):
 	if enemy_health <= 0:
 		queue_free()
 
+
+
 func change_music():
 	if attacking:
 		MusicPlayer.playintense()
@@ -77,10 +80,6 @@ func change_music():
 		MusicPlayer.playcalmer()
 
 func enemy_shoot():
-		var b = enemy_bullet.instantiate()
-		owner.add_child(b)
-		b.transform = $EnemyMuzzle.global_transform
-
-
-func _on_enemy_shoot_timer_timeout():
-	enemy_shoot()
+	var b = enemy_bullet.instantiate()
+	owner.add_child(b)
+	b.transform = $EnemyMuzzle.global_transform

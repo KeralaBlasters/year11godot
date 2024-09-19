@@ -7,15 +7,16 @@
 size = Vector2(4, 51)
 
 [node name="EnemyBullet" type="Area2D"]
-rotation = 1.5708
 script = ExtResource("1_klcef")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.90735e-06, -25.5)
+position = Vector2(27, 1.00006)
+rotation = 1.57079
 shape = SubResource("RectangleShape2D_8w1qv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -27)
+position = Vector2(27, -0.499939)
+rotation = 1.57079
 texture = ExtResource("2_yijtj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -108,7 +108,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="DetectPlayerArea"]
 position = Vector2(71, -6)
-polygon = PackedVector2Array(-113, 10, -71, -94, -32, -77, 5, -47, 207, -67, 242, -21, 244, 36, 215, 88, 3, 63, -30, 85, -70, 104)
+polygon = PackedVector2Array(-113, 10, -70, -141, -20, -107, 5, -47, 207, -67, 242, -21, 244, 36, 215, 88, 3, 63, -13, 103, -71, 130)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -134,6 +134,7 @@ stream = ExtResource("4_dc0c8")
 stream = ExtResource("5_toebj")
 
 [node name="EnemyShootTimer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="body_entered" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_entered"]
 [connection signal="body_exited" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_exited"]

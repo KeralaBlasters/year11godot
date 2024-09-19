@@ -29,8 +29,6 @@ func update_animation():
 			anim_state = state.IDLE
 
 
-#func _process(delta):
-#	time += delta
 
 
 func _physics_process(delta):
