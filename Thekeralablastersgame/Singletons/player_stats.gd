@@ -1,6 +1,6 @@
 extends Node
 
-var player_health = 100
+@export var player_health = 100
 var player_max_health = 100
 var player_level = 1
 var player_experience = 0
@@ -9,6 +9,10 @@ var next_level = 15
 signal level_up
 signal add_xp
 signal take_damage
+
+func reset():
+	player_health = 100
+	
 
 func level_up_player():
 	player_level += 1

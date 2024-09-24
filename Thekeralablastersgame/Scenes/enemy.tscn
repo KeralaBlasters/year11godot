@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4y2p5gj54p5q"]
+[gd_scene load_steps=9 format=3 uid="uid://c4y2p5gj54p5q"]
 
 [ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_qvcea"]
 [ext_resource type="Texture2D" uid="uid://crefcvtaf4mx0" path="res://Sprites/EnemyIdle.png" id="1_vu0pt"]
 [ext_resource type="Texture2D" uid="uid://c6yridohsmpk2" path="res://Sprites/EnemyShoot.png" id="2_ocfbl"]
-[ext_resource type="AudioStream" uid="uid://3mrxcjdwll11" path="res://Sounds/Glitch in the System (calmer music).mp3" id="4_dc0c8"]
-[ext_resource type="AudioStream" uid="uid://dwsumvamlnvl7" path="res://Sounds/Pixelated Dreams (intense music).mp3" id="5_toebj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ymxhh"]
 radius = 14.0357
@@ -108,7 +106,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="DetectPlayerArea"]
 position = Vector2(71, -6)
-polygon = PackedVector2Array(-113, 10, -70, -141, -20, -107, 5, -47, 207, -67, 242, -21, 244, 36, 215, 88, 3, 63, -13, 103, -71, 130)
+polygon = PackedVector2Array(-113, 10, -70, -141, -20, -107, 5, -47, 385, -97, 446, -41, 447, 40, 376, 104, 3, 63, -13, 103, -71, 130)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -127,13 +125,8 @@ debug_path_custom_color = Color(1, 0, 1, 1)
 debug_path_custom_point_size = 5.9
 debug_path_custom_line_width = 4.83
 
-[node name="CalmerMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_dc0c8")
-
-[node name="IntenseMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_toebj")
-
 [node name="EnemyShootTimer" type="Timer" parent="."]
+wait_time = 0.7
 autostart = true
 
 [connection signal="body_entered" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_entered"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7m24qxsulb7v"]
+[gd_scene load_steps=7 format=3 uid="uid://c7m24qxsulb7v"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_nvq0i"]
 [ext_resource type="Texture2D" uid="uid://dfn1q53t6lwfr" path="res://kerala blasters cover image.jpg" id="2_0syqk"]
-[ext_resource type="AudioStream" uid="uid://ckvgyxgmbmkle" path="res://Sounds/Blasters Unite (menu music).mp3" id="3_khrj8"]
 
 [sub_resource type="Theme" id="Theme_mcvfj"]
 Button/colors/font_color = Color(0.93791, 0.86327, 0, 1)
@@ -67,11 +66,6 @@ text = "QUIT"
 position = Vector2(225, 123)
 zoom = Vector2(1.1, 1.1)
 limit_top = -10000005
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_khrj8")
-autoplay = true
-parameters/looping = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

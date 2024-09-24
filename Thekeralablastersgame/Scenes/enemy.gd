@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
-@export var enemy_speed = 20
+@export var enemy_speed = 30
+
 var attacking = false
 var player = null
 
 @onready var animation_player = $AnimationPlayer
 @export var player_look_at: NodePath
 @export var Enemy_bullet = PackedScene
-@export var enemy_health = 10
+@export var enemy_health = 20
 
 @export var calmer_music_path:NodePath
 @export var intense_music_path: NodePath

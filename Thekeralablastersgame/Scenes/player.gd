@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite
 @export var ROTATION_SPEED = 1.5
 
-@export var player_health = 100
+
 
 @export var Bullet : PackedScene
 
@@ -57,8 +57,10 @@ func shoot():
 	
 
 func player_take_damage(dmg):
-	player_health -= dmg
-	player_health - 10
-	if player_health <= 0:
+	PlayerStats.player_health -= dmg
+	
+	$UI.update_health()
+	if PlayerStats.player_health <= 0:
 		queue_free()
 		get_tree().change_scene_to_file("res://Scenes/Levels/you_died.tscn")
+		PlayerStats.reset()
