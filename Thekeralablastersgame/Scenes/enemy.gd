@@ -29,7 +29,7 @@ func _physics_process(delta):
 	if attacking:
 		enemy_anim_state = state.ATTACK
 		if enemy_shoot_timer.is_stopped():enemy_shoot_timer.start()
-		#_on_enemy_shoot_timer_timeout()
+		
 	else:
 		enemy_anim_state = state.IDLE
 		enemy_shoot_timer.stop()
@@ -42,8 +42,6 @@ func _physics_process(delta):
 	update_enemy_animation()
 
 
-
-
 func update_enemy_animation():
 	match enemy_anim_state:
 		state.IDLE:
@@ -51,6 +49,9 @@ func update_enemy_animation():
 		state.ATTACK:
 			$AnimationPlayer.play("attack")
 			
+
+
+
 
 func _on_detect_player_area_body_entered(body):
 	player = body
@@ -72,8 +73,8 @@ func take_damage(dmg):
 	if enemy_health <= 0:
 		queue_free()
 
-
-
+#This function makes the more intense music play when the enemy is attacking the player
+#This function also makes the calmer music play when the enemy is not attacking the player
 func change_music():
 	if attacking:
 		MusicPlayer.playintense()

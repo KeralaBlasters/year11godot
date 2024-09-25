@@ -13,12 +13,11 @@ extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var animator = $AnimatedSprite2D
 
-#var time = 0
-#var best_time = 0
 
 enum state {IDLE, SHOOT}
 var anim_state = state.IDLE
 
+#This function makes my player change animation when it is shooting
 func update_animation():
 	match anim_state:
 		state.IDLE:
@@ -32,14 +31,12 @@ func update_animation():
 
 
 func _physics_process(delta):
+	#This if statment also makes the player change animation when it is shooting
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 		anim_state = state.SHOOT
 	
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	
+	#This code makes the player move and look at the mouse
 	look_at(get_global_mouse_position())
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * SPEED
@@ -48,6 +45,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+#This is my function to make the player shoot
 func shoot():
 		
 		var b = Bullet.instantiate()
@@ -56,6 +54,7 @@ func shoot():
 		
 	
 
+#This is my function to make the player take damage
 func player_take_damage(dmg):
 	PlayerStats.player_health -= dmg
 	

@@ -114,7 +114,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_kmked")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_naafc"]
-size = Vector2(20, 33)
+size = Vector2(20, 24)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_4djbo")
@@ -175,4 +175,6 @@ scale = Vector2(0.2, 0.2)
 position = Vector2(258, 117)
 scale = Vector2(0.2, 0.2)
 
-[connection signal="body_entered" from="GoToLevel2" to="." method="_on_go_to_level_2_body_entered"]
+[node name="Enemy9" parent="." instance=ExtResource("3_i7781")]
+position = Vector2(184, 114)
+scale = Vector2(0.2, 0.2)
