@@ -178,3 +178,5 @@ scale = Vector2(0.2, 0.2)
 [node name="Enemy9" parent="." instance=ExtResource("3_i7781")]
 position = Vector2(184, 114)
 scale = Vector2(0.2, 0.2)
+
+[connection signal="body_entered" from="GoToLevel2" to="." method="_on_go_to_level_2_body_entered"]
